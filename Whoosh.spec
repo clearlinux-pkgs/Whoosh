@@ -4,7 +4,7 @@
 #
 Name     : Whoosh
 Version  : 2.7.4
-Release  : 10
+Release  : 11
 URL      : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Source0  : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Summary  : Fast, pure-Python full text indexing, search, and spell checking library.
@@ -13,11 +13,17 @@ License  : BSD-2-Clause
 Requires: Whoosh-legacypython
 Requires: Whoosh-python3
 Requires: Whoosh-python
+BuildRequires : attrs-python
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy-python
+BuildRequires : py-python
+BuildRequires : pytest-python
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : six
+BuildRequires : six-python
 
 %description
 ============
@@ -64,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507181206
+export SOURCE_DATE_EPOCH=1519085225
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -74,7 +80,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test
 %install
-export SOURCE_DATE_EPOCH=1507181206
+export SOURCE_DATE_EPOCH=1519085225
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
