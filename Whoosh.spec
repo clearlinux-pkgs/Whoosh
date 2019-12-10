@@ -4,7 +4,7 @@
 #
 Name     : Whoosh
 Version  : 2.7.4
-Release  : 30
+Release  : 31
 URL      : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Source0  : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Summary  : Fast, pure-Python full text indexing, search, and spell checking library.
@@ -18,12 +18,12 @@ BuildRequires : pytest
 BuildRequires : setuptools_scm
 
 %description
-About Whoosh
 ============
-Whoosh is a fast, featureful full-text indexing and searching library
-implemented in pure Python. Programmers can use it to easily add search
-functionality to their applications and websites. Every part of how Whoosh
-works can be extended or replaced to meet your needs exactly.
+        
+        Whoosh is a fast, featureful full-text indexing and searching library
+        implemented in pure Python. Programmers can use it to easily add search
+        functionality to their applications and websites. Every part of how Whoosh
+        works can be extended or replaced to meet your needs exactly.
 
 %package license
 Summary: license components for the Whoosh package.
@@ -54,13 +54,19 @@ python3 components for the Whoosh package.
 
 %prep
 %setup -q -n Whoosh-2.7.4
+cd %{_builddir}/Whoosh-2.7.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554303737
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576017814
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -68,12 +74,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/Whoosh
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/Whoosh/LICENSE.txt
+cp %{_builddir}/Whoosh-2.7.4/LICENSE.txt %{buildroot}/usr/share/package-licenses/Whoosh/ba715b7e75e6b2fb8987a256f78fa39ef66e8a8c
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -84,7 +90,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/Whoosh/LICENSE.txt
+/usr/share/package-licenses/Whoosh/ba715b7e75e6b2fb8987a256f78fa39ef66e8a8c
 
 %files python
 %defattr(-,root,root,-)
