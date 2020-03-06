@@ -4,7 +4,7 @@
 #
 Name     : Whoosh
 Version  : 2.7.4
-Release  : 33
+Release  : 34
 URL      : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Source0  : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Summary  : Fast, pure-Python full text indexing, search, and spell checking library.
@@ -18,12 +18,12 @@ BuildRequires : pytest
 BuildRequires : setuptools_scm
 
 %description
-About Whoosh
 ============
-Whoosh is a fast, featureful full-text indexing and searching library
-implemented in pure Python. Programmers can use it to easily add search
-functionality to their applications and websites. Every part of how Whoosh
-works can be extended or replaced to meet your needs exactly.
+        
+        Whoosh is a fast, featureful full-text indexing and searching library
+        implemented in pure Python. Programmers can use it to easily add search
+        functionality to their applications and websites. Every part of how Whoosh
+        works can be extended or replaced to meet your needs exactly.
 
 %package license
 Summary: license components for the Whoosh package.
@@ -47,7 +47,7 @@ python components for the Whoosh package.
 Summary: python3 components for the Whoosh package.
 Group: Default
 Requires: python3-core
-Provides: pypi(Whoosh)
+Provides: pypi(whoosh)
 
 %description python3
 python3 components for the Whoosh package.
@@ -62,8 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1582902687
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583524939
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
