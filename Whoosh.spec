@@ -4,7 +4,7 @@
 #
 Name     : Whoosh
 Version  : 2.7.4
-Release  : 43
+Release  : 44
 URL      : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Source0  : http://pypi.debian.net/Whoosh/Whoosh-2.7.4.tar.gz
 Summary  : Fast, pure-Python full text indexing, search, and spell checking library.
